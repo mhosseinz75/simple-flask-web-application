@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- a simple web application create by mohammad hossein zadeh abbas with flask - bootstrap -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>todo list</title>
+    <style>
+        body{
+            background-color: #212121;
+        }
+    </style>
+
+</head>
+<body>
+<nav class="navbar navbar-inverse" style="margin-bottom:0%">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="http://127.0.0.1:5000/">mhz flask application</a>
+        </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="http://127.0.0.1:5000/">Home</a></li>
+                <li><a href="http://127.0.0.1:5000/note">Note</a></li>
+                <li><a href="http://127.0.0.1:5000/todolist">todo list</a></li>
+            </ul>
+    </div>
+</nav>
+
+<div class="jumbotron text-center">
+    <h1>Note</h1>
+    <p>enter your note</p> 
+        <form action="/addnote" method="post">
+            <p><input type="text" name="notecontent"></p>
+            <input type="submit" class="btn btn-primary" value="Add note">
+        </form>
+</div>
+
+<ul style="     position:relative;
+                left: 0;
+                top: 50%;
+                width: 100%;
+                text-align: center;
+                font-size: 18px;
+                margin-top:10%;"
+>
+        {% for note in notes %}
+
+        <li style="font-size:30px; color:white;">
+                <h1>
+                    {{ note.notecontent }}
+                </h1>
+        <div class="btn-group">
+            <a href="/deletenote/{{ note.id }}" id="delete">
+                <button type="button" class="btn btn-primary">
+                    Delete     
+                </button>
+            </a>
+        </div>
+
+        </li>
+                                    
+        {% endfor %}
+</ul>
+        
+    
+</body>
+</html>
